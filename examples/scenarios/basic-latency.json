@@ -1,0 +1,15 @@
+{
+  "id": "basic-latency",
+  "description": "A clean synthetic turn used to establish a latency baseline.",
+  "audio": {
+    "duration_ms": 1200,
+    "sample_rate_hz": 16000,
+    "frequency_hz": 440.0,
+    "amplitude": 0.15,
+    "chunk_ms": 100
+  },
+  "expected": {
+    "task_success": true,
+    "tool_name": "lookup_order"
+  }
+}
