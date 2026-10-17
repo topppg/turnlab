@@ -1,0 +1,23 @@
+{
+  "id": "hostile-network",
+  "description": "Noise, silence, transport jitter, one dropped window, and an interruption marker.",
+  "audio": {
+    "duration_ms": 2000,
+    "sample_rate_hz": 16000,
+    "frequency_hz": 330.0,
+    "amplitude": 0.12,
+    "chunk_ms": 100
+  },
+  "impairments": [
+    {"kind": "noise", "at_ms": 0, "duration_ms": 2000, "amount": 0.04, "seed": 7},
+    {"kind": "silence", "at_ms": 500, "duration_ms": 300},
+    {"kind": "jitter", "at_ms": 0, "duration_ms": 2000, "amount": 90, "seed": 9},
+    {"kind": "delay", "at_ms": 800, "duration_ms": 200, "amount": 180},
+    {"kind": "drop", "at_ms": 1200, "duration_ms": 200, "amount": 1.0, "seed": 3},
+    {"kind": "interruption", "at_ms": 1700}
+  ],
+  "expected": {
+    "task_success": true,
+    "interruption_recovered": true
+  }
+}

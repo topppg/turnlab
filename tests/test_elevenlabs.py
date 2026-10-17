@@ -150,7 +150,8 @@ def test_protocol_events_are_received_while_audio_is_sent() -> None:
     }
     assert {event.sensitive for event in events if "transcript" in event.kind.value} == {True}
     assert {"type": "pong", "event_id": 41} in socket.sent
-    assert socket.actions.index("send:pong") < socket.actions.index("send:audio", 2)
+    audio_actions = [index for index, action in enumerate(socket.actions) if action == "send:audio"]
+    assert audio_actions[0] < socket.actions.index("send:pong") < audio_actions[-1]
     assert socket.timed_out is True
 
 
